@@ -34,15 +34,12 @@ Circle::Circle(QWidget* parent) {
   yellow.load("yellow.png");
   current = green;
   setGeometry(current.rect());
-
-
 }
 
 void Circle::paintEvent(QPaintEvent* e) {
   QPainter p(this);
   p.drawPixmap(e->rect(), current);
 }
-
 
 QSize Circle::sizeHint() const {
   return QSize(200, 200);
@@ -51,8 +48,6 @@ QSize Circle::sizeHint() const {
 QSize Circle::minimumSizeHint() const {
   return sizeHint();
 }
-
-
 
 void Circle::currGreen() {
   current = green;
@@ -81,15 +76,12 @@ int main(int argc, char* argv[])
   QObject::connect(slider, &QSlider::valueChanged, [&slider, &circle](int newValue) {
     if (newValue > 30 && newValue < 60) {
       circle->currYellow();
-    }
-    else if (newValue > 60) {
-      circle->currRed();
-    }
-    else {
+    } else if (newValue > 60) {
+       circle->currRed();
+    } else {
       circle->currGreen();
     }
-
-    });
+   });
 
   auto* Hlayout = new QHBoxLayout;
   auto* Vlayout = new QVBoxLayout;
